@@ -1,0 +1,297 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: .2s;
+    border: none;
+    color: white;
+}
+
+/****************** the same elements ****************/
+/* all lists */
+ul{
+    list-style: none;
+}
+/* all links */
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+/********* body ***********/
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+
+/********************* navBar *********************/
+.nav{
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    top: 30px;
+    height: 70px;
+    z-index: 999;
+}
+.nav nav{
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+.nav nav .logo img{
+    width: 40px;
+    margin-left:30px ;
+}
+.nav nav .ul-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 70px;
+    backdrop-filter: blur(10px);
+    background-color: rgb(255, 255, 255, 0.05);
+}
+.nav nav ul li a{
+    display: block;
+    margin-right: 30px;
+    padding: 25px 10px ;
+    border-bottom: 2px solid transparent;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.nav nav ul li a:hover{
+    border-bottom: 2px solid white;
+}
+.open-list-nav,.close-list-nav{
+    display: none;
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.mobile-nav{
+    display: none;
+    z-index: 999;
+}
+
+
+/*********** main *************/
+main{
+    background-image: url('assets/home/background-home-desktop.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('assets/destination/background-destination-desktop.jpg');
+}
+
+/**************************** section home page ********************************/
+.home-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-width: 1024px;
+    margin: auto;
+
+}
+.home-page .container{
+    width: 85%;
+    height: 60%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.home-page .container .content-hp{
+    max-width: 450px;
+    animation: hpl 2s both;
+}
+.home-page .container .content-hp .f-content-hp{
+    color: rgb(255, 255, 255,0.8);
+    font-size: 20px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+.home-page .container .content-hp h1{
+    font-size: 100px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 15px 0 30px 0;
+}
+.home-page .container .s-content-hp{
+    color: rgb(255, 255, 255,0.8);
+    letter-spacing: 1.5px;
+    font-weight: 100;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+}
+.home-page .circle-explore-hp{
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-size: 27px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    animation: hpr 2s both;
+}
+
+
+/**************************** destination ***************************/
+.destination{
+    height: 100vh;
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+
+    opacity: 0;
+    display: none;
+}
+
+
+
+
+/**************** animation ************************/
+@keyframes hpl{
+    from{
+        transform: translateX(-30px);
+        opacity: 0;
+    }to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes hpr{
+    from{
+        transform: translateX(60px);
+        opacity: 0;
+    }to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+/************************ @media ***********************/
+@media screen and (max-width:992px){
+    .nav{
+        top: 0;
+    }
+    .nav nav ul li a span{
+        display: none;
+    }
+    .nav nav ul li a{
+        margin-right: 0;
+    }
+    .nav nav .ul-nav{
+        justify-content: space-evenly;
+        top: 0;
+    }
+
+    /* home page*/
+    main{
+        background-image: url('assets/home/background-home-tablet.jpg');
+    }
+}
+@media screen and (max-width:900px){
+    /* home page */
+    .home-page{
+        align-items: flex-end;
+    }
+    .home-page .container{
+        flex-direction: column;
+        align-items: center;
+        height: 70%;
+        gap: 80px;
+        padding-bottom: 50px;
+    }
+    .home-page .container .content-hp .s-content-hp{
+        text-align: center;
+        color: rgb(255, 255, 255, 0.5);
+    }
+    .home-page .container .content-hp .f-content-hp{
+        text-align: center;
+        color: rgb(255, 255, 255, 0.7);
+    }
+    .home-page .container .content-hp h1{
+        text-align: center;
+        margin: 10px 0 15px 0;
+    }
+    .home-page .circle-explore-hp{
+        width: 180px;
+        height: 180px;
+    }
+}
+@media screen and (max-width:580px){
+    .nav nav .ul-nav{
+        display: none;
+    }
+    .nav{
+        /* backdrop-filter: blur(10px);
+        background-color: rgb(255, 255, 255, 0.05); */
+        /* height: 380px; */
+        height: 100px;
+    }
+    nav{
+        position: absolute;
+        width: 100%;
+        top: 15px;
+    }
+    .mobile-nav{
+        position: absolute;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+        width: 100%;
+        gap: 25px;
+        display: none;
+    }
+    .mobile-nav li a{
+        display: block;
+        padding: 10px ;
+        border-bottom: 2px solid transparent;
+    }
+    .mobile-nav li a:hover{
+        border-color: white;
+    }
+    .open-list-nav{
+        display: block;
+    }
+    .close-list-nav{
+        display: none;
+    }
+
+    /* home page */
+    main{
+        background-image: url('assets/home/background-home-mobile.jpg');
+    }
+    .home-page .container .content-hp h1{
+        font-size: 90px;
+    }
+    .home-page .container .s-content-hp{
+        font-size: 14px;
+    }
+
+}
