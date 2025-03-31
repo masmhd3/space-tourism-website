@@ -17,7 +17,7 @@ btnOpenUlNav.onclick = function(){
     }
 }
 btnCloseUlNav.onclick = function(){
-    if(mobileUlNav.style.display != 'none' || mobileUlNav.style.display != ''){4
+    if(mobileUlNav.style.display != 'none' || mobileUlNav.style.display != ''){
         // btn
         btnOpenUlNav.style.display = 'block'
         btnCloseUlNav.style.display = 'none'
@@ -62,7 +62,6 @@ const DestinationLink = document.querySelector('.DestinationLink')
 const allPages = document.querySelectorAll('.page')
 
 DestinationLink.addEventListener('click',function(){
-    console.log('fa')
     allPages.forEach((page) => page.style.display = 'none')
     destinationPage.style.display = 'flex'
 
@@ -81,6 +80,9 @@ homeLink.addEventListener('click', () =>{
     allPages.forEach((page) => page.style.display = 'none')
     homePage.style.display = 'flex'
 
+    if(mobileUlNav.style.display != 'none' || mobileUlNav.style.display != ''){
+        btnCloseUlNav.click()
+    }
     
     resback(
         'assets/home/background-home-desktop.jpg',
