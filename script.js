@@ -29,7 +29,6 @@ btnCloseUlNav.onclick = function(){
     }
 }
 
-
 // links in navBar
 const linkNavDT = document.querySelectorAll('#linkNavDT');
 const linkNavM = document.querySelectorAll('#linkNavM');
@@ -40,6 +39,7 @@ linkNavDT.forEach((link) =>{
         link.style.borderColor = 'white'
         linkNavM.forEach((link) => link.style.borderColor = 'transparent' )
         linkNavM[Array.from(linkNavDT).indexOf(link)].style.borderColor = 'white'
+
     }
     linkNavDT[0].click()
 })
@@ -65,9 +65,20 @@ DestinationLink.addEventListener('click',function(){
     allPages.forEach((page) => page.style.display = 'none')
     destinationPage.style.display = 'flex'
 
-    resback('assets/destination/background-destination-desktop.jpg',
+    main.style.backgroundImage = `url(assets/destination/background-destination-desktop.jpg)`
+    destinationPage.style.display = 'flex'
+    setTimeout(() => destinationPage.style.opacity = '1', 50);
+
+    efpijew(
+        'assets/destination/background-destination-desktop.jpg',
         'assets/destination/background-destination-tablet.jpg',
-        'assets/destination/background-destination-mobile.jpg')
+        'assets/destination/background-destination-mobile.jpg',
+    )
+    resback(
+        'assets/destination/background-destination-desktop.jpg',
+        'assets/destination/background-destination-tablet.jpg',
+        'assets/destination/background-destination-mobile.jpg',
+    )
 
 })
 linkNavM[1].addEventListener('click', () =>{
@@ -79,24 +90,60 @@ const homeLink = document.querySelector('.homeLink');
 homeLink.addEventListener('click', () =>{
     allPages.forEach((page) => page.style.display = 'none')
     homePage.style.display = 'flex'
+    // main.style.backgroundImage = `url(assets/home/background-home-desktop.jpg)`
 
-    if(mobileUlNav.style.display != 'none' || mobileUlNav.style.display != ''){
-        btnCloseUlNav.click()
-    }
-    
+    efpijew(
+        'assets/home/background-home-desktop.jpg',
+        'assets/home/background-home-tablet.jpg',
+        'assets/home/background-home-mobile.jpg',
+    )
     resback(
         'assets/home/background-home-desktop.jpg',
         'assets/home/background-home-tablet.jpg',
-        'assets/home/background-home-mobile.jpg')
+        'assets/home/background-home-mobile.jpg',
+    )
+})
+linkNavM[0].addEventListener('click', () =>{
+    btnCloseUlNav.click()
 })
 
 // function responsive background
-function resback(back1,back2,back3){
+
+function resback(img1,img2,img3){
     if(screen.width > 992){
-        main.style.backgroundImage = `url(${back1})`
+        main.style.backgroundImage = `url(${img1})`
     }else if(screen.width < 992 && screen.width > 580){
-        main.style.backgroundImage = `url(${back2})`
+        main.style.backgroundImage = `url(${img2})`
     }else if(screen.width < 580){
-        main.style.backgroundImage = `url(${back3})`
+        main.style.backgroundImage = `url(${img3})`
     }
+}
+function resBTNNAV(){
+    if(screen.width > 580){
+        btnOpenUlNav.style.display = 'none'
+    }else{
+        btnOpenUlNav.style.display = 'block'
+    }
+}
+function efpijew(back1,back2,back3){
+    window.matchMedia("(orientation:portrait)").addEventListener('change',function(event){
+        if(event.matches){
+            if(screen.width > 992){
+                main.style.backgroundImage = `url(${back1})`
+            }else if(screen.width < 992 && screen.width > 580){
+                main.style.backgroundImage = `url(${back2})`
+            }else if(screen.width < 580){
+                main.style.backgroundImage = `url(${back3})`
+            }
+        }else{
+            if(screen.width > 992){
+                main.style.backgroundImage = `url(${back1})`
+            }else if(screen.width < 992 && screen.width > 580){
+                main.style.backgroundImage = `url(${back2})`
+            }else if(screen.width < 580){
+                main.style.backgroundImage = `url(${back3})`
+            }
+        }
+        resBTNNAV()
+    })
 }
