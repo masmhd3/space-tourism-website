@@ -147,3 +147,40 @@ function efpijew(back1,back2,back3){
         resBTNNAV()
     })
 }
+
+
+/////////////// links of destination //////
+const destinationLinks = document.querySelectorAll('.ul-dp li a');
+const numberDS = document.getElementById('numberDes');
+const imgDS = document.getElementById('imgDes');
+const h1_dp = document.querySelector('.h1-dp');
+const p_dp = document.querySelector('.p-dp');
+const extrINFDP_Span = document.querySelectorAll('.extr-INFDP p span');
+
+let DataDestination;
+fetch('http://localhost:5500/data.json')
+    .then((data) => data.json())
+    .then((data) =>{
+        destinationLinks.forEach((link) => {
+            link.addEventListener('click',function(){
+                // style links
+                destinationLinks.forEach((link) => link.style.borderColor = 'transparent')
+                link.style.borderColor = 'white'
+
+                // get data of destination "object"
+                DataDestination = data.destinations[Array.from(destinationLinks).indexOf(link)]
+
+                // put data
+                numberDS.innerHTML = `0${Array.from(destinationLinks).indexOf(link)}`
+                imgDS.src = DataDestination.images.png
+                h1_dp.innerHTML = DataDestination.name
+                p_dp.innerHTML = DataDestination.description
+                extrINFDP_Span[0].innerHTML = DataDestination.distance
+                extrINFDP_Span[1].innerHTML = DataDestination.travel
+            })
+        })
+        destinationLinks[0].click()
+    })
+    .catch((erorr) => console.log(`Error loading data ${erorr}`))
+
+
