@@ -158,11 +158,12 @@ const p_dp = document.querySelector('.p-dp');
 const extrINFDP_Span = document.querySelectorAll('.extr-INFDP p span');
 
 let DataDestination;
-fetch('data.json')
+fetch('http://localhost:5500/data.json')
     .then((data) => data.json())
     .then((data) =>{
         destinationLinks.forEach((link) => {
-            link.addEventListener('click',function(){
+            link.addEventListener('click',function(event){
+                event.preventDefault();
                 // style links
                 destinationLinks.forEach((link) => link.style.borderColor = 'transparent')
                 link.style.borderColor = 'white'
