@@ -158,7 +158,7 @@ const p_dp = document.querySelector('.p-dp');
 const extrINFDP_Span = document.querySelectorAll('.extr-INFDP p span');
 
 let DataDestination;
-fetch('http://localhost:5500/data.json')
+fetch('data.json')
     .then((data) => data.json())
     .then((data) =>{
         destinationLinks.forEach((link) => {
