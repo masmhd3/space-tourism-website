@@ -185,3 +185,82 @@ fetch('data.json')
     .catch((erorr) => console.log(`Error loading data ${erorr}`))
 
 
+
+//////////// crew ///////////////////////
+const crewLInk = document.querySelector('.crewLInk')
+const crewPage = document.querySelector('.crew')
+crewLInk.addEventListener('click',function(){
+    allPages.forEach((page) => page.style.display = 'none')
+    crewPage.style.display = 'flex'
+    setTimeout(() => crewPage.style.opacity = '1', 50);
+
+    efpijew(
+        'assets/crew/background-crew-desktop.jpg',
+        'assets/crew/background-crew-tablet.jpg',
+        'assets/crew/background-crew-mobile.jpg',
+    )
+    resback(
+        'assets/crew/background-crew-desktop.jpg',
+        'assets/crew/background-crew-tablet.jpg',
+        'assets/crew/background-crew-mobile.jpg',
+    )
+
+})
+
+
+// edit photo
+const imgCrew = document.getElementById('imgCrew')
+function resImgCrew(){
+    if(screen.width > 850){
+        if(imgCrew.src.includes('image-anousheh-ansari.png')){
+            imgCrew.style.width = '420px'
+            document.querySelector('.name-cp').style.fontSize = '35px'
+        }else if(imgCrew.src.includes('assets/crew/image-mark-shuttleworth.png')){
+            imgCrew.style.width = '320px'
+        }
+        else{
+            imgCrew.style.width = '350px'
+            document.querySelector('.name-cp').style.fontSize = '39px'
+        }
+        if(imgCrew.src.includes('assets/crew/image-victor-glover.png')){
+            document.querySelector('.left-ccp').style.transform = 'translateY(-50px)';
+        }else{
+            document.querySelector('.left-ccp').style.transform = 'translateY(0)';
+        }
+        
+    }
+}
+resImgCrew()
+window.addEventListener('resize', resImgCrew);
+
+//
+fetch('data.json')
+    .then((data) => data.json())
+    .then((data) =>  {
+        const linksCP = document.querySelectorAll('.points-ranio-cr div a')
+        linksCP.forEach((link) => {
+            link.addEventListener('click',function(event){
+                // prevent reload 
+                event.preventDefault()
+    
+                // style
+                linksCP.forEach((link) => link.style.backgroundColor = '#ffffff80')
+                link.style.backgroundColor = 'white'
+
+                
+                // data of crew
+                const dataCrew = data.crew[Array.from(linksCP).indexOf(link)]
+                document.querySelector('.top-cp span').innerHTML = `0${(Array.from(linksCP).indexOf(link)) + 1}`
+                document.getElementById('imgCrew').src = dataCrew.images.png
+                document.querySelector('.job-cp').innerHTML = dataCrew.role
+                document.querySelector('.name-cp').innerHTML = dataCrew.name
+                document.querySelector('.script-cp').innerHTML = dataCrew.bio
+                
+                resImgCrew()
+            })
+        })
+        linksCP[0].click()
+
+    })
+    .catch(error => console.log('error loading data ' + error))
+
