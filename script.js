@@ -194,6 +194,8 @@ crewLInk.addEventListener('click',function(){
     crewPage.style.display = 'flex'
     setTimeout(() => crewPage.style.opacity = '1', 50);
 
+    
+
     efpijew(
         'assets/crew/background-crew-desktop.jpg',
         'assets/crew/background-crew-tablet.jpg',
@@ -264,3 +266,26 @@ fetch('data.json')
     })
     .catch(error => console.log('error loading data ' + error))
 
+
+
+//////////////////////// technology ////////////////////////////
+const linkTechPage = document.querySelector('.linkNavDT')
+const technologyPace = document.querySelector('.technology')
+
+linkTechPage.addEventListener('click',function(){
+    allPages.forEach((page) => page.style.display = 'none')
+    technologyPace.style.display = 'flex'
+    setTimeout(() => technologyPace.style.opacity = '1', 50);
+
+    efpijew(
+        'assets/technology/background-technology-desktop.jpg',
+        'assets/technology/background-technology-tablet.jpg',
+        'assets/technology/background-technology-mobile.jpg',
+    )
+    resback(
+        'assets/technology/background-technology-desktop.jpg',
+        'assets/technology/background-technology-tablet.jpg',
+        'assets/technology/background-technology-mobile.jpg',
+    )
+})
+linkTechPage.click()

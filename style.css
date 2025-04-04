@@ -292,6 +292,7 @@ main{
 }
 .left-ccp{
     max-width: 400px;
+    animation: hpl 2s both;
 }
 .container-cp .job-cp{
     font-size: 25px;
@@ -309,6 +310,7 @@ main{
 }
 .container-cp img{
     width:350px;
+    animation: hpr 2s both;
 }
 .script-cp{
     color: rgb(255, 255, 255,0.7);
@@ -336,6 +338,19 @@ main{
 }
 
 
+/************************* technology *********************/
+.technology{
+    opacity: 0;
+    display: none;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
 /**************** animation ************************/
 @keyframes hpl{
     from{
@@ -355,8 +370,6 @@ main{
         opacity: 1;
     }
 }
-
-
 
 
 
