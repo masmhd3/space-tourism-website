@@ -256,6 +256,7 @@ fetch('data.json')
                 // data of crew
                 const dataCrew = data.crew[Array.from(linksCP).indexOf(link)]
                 document.querySelector('.top-cp span').innerHTML = `0${(Array.from(linksCP).indexOf(link)) + 1}`
+                document.querySelector('.toptop-cp span').innerHTML = `0${(Array.from(linksCP).indexOf(link)) + 1}`
                 document.getElementById('imgCrew').src = dataCrew.images.png
                 document.querySelector('.job-cp').innerHTML = dataCrew.role
                 document.querySelector('.name-cp').innerHTML = dataCrew.name
@@ -294,3 +295,40 @@ linkTechPage.addEventListener('click',function(){
 linkNavM[3].addEventListener('click', () =>{
     btnCloseUlNav.click()
 })
+
+
+
+//////// get and put data //////
+const linksTechPage = document.querySelectorAll('.numlink a')
+
+fetch('data.json')
+    .then((data) => data.json())
+    .then((data) => {
+
+        linksTechPage.forEach((link) => {
+            link.addEventListener('click',function(event){
+                // don't reload page
+                event.preventDefault()
+                //style
+                linksTechPage.forEach((link) => {
+                    link.style.backgroundColor = 'transparent'
+                    link.style.borderColor = '#ffffff80'
+                    link.style.color = ' rgba(255, 255, 255, 0.8)'
+                })
+                link.style.backgroundColor = 'white'
+                link.style.borderColor = 'white'
+                link.style.color = 'black'
+
+                // get and put data from data.json
+                const dataTechOBJ = data.technology[Array.from(linksTechPage).indexOf(link)]
+                document.querySelector('.top-tp span').innerHTML = `0${(Array.from(linksTechPage).indexOf(link) + 1)}`
+                document.querySelector('.nameTechnology').innerHTML= dataTechOBJ.name
+                document.querySelector('.script').innerHTML= dataTechOBJ.description
+                document.querySelector('#techImg').src = dataTechOBJ.images.portrait
+            })
+        })
+        linksTechPage[0].click()
+
+    })
+    .catch((error) => console.log(`error loading data ${error}`))
+

@@ -11,6 +11,7 @@
     --white8: rgba(255, 255, 255, 0.8);
     --white7: rgba(255, 255, 255, 0.7);
     --white5: rgba(255, 255, 255, 0.5);
+    --white6: rgba(255, 255, 255, 0.6);
 }
 
 /****************** the same elements ****************/
@@ -274,14 +275,14 @@ main{
     opacity: 0;
     display: none;
 }
-.top-cp,.toptop-cp{
+.top-cp,.toptop-cp,.top-tp{
     color: var(--white8);
     font-size: 20px;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 80px;
 }
-.top-cp span,.toptop-cp span{
+.top-cp span,.toptop-cp span,.top-tp span{
     color: var(--white5);
     margin-right: 3px;
 }
@@ -341,10 +342,79 @@ main{
 /************************* technology *********************/
 .technology{
     opacity: 0;
+    display: flex;
+    flex-direction: column;
     display: none;
     min-height: 100vh;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 100px 0 20px 0;
+    overflow: hidden;
+}
+.top-tp{
+    margin-bottom: 0;
+    animation: top-tp 2s both;
+}
+.cont-tp{
+    max-width: 950px;
+}
+.container-tp{
+    display: flex;
+    gap: 100px;
+}
+.left-tp{
+    display: flex;
+    align-items: center;
+}
+.number-tp{
+    margin-right: 50px;
+}
+.number-tp{
+    animation: links-tp 2s both;
+}
+.number-tp div a{
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-color: transparent;
+    border: 2px solid #ffffff80;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--white8);
+
 }
 
+.topText-tp{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--white7);
+}
+.script-tp h1{
+    font-weight: 100;
+    font-size: 45px;
+    margin: 1px 0 20px 0;
+    color: var(--white8);
+    letter-spacing: 2px;
+}
+.script-tp .script{
+    color: var(--white6);
+    letter-spacing: 2px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.container-tp img{
+    width: 350px;
+    height: 350px;
+    animation: img-tp 2s both;
+}
+.script-tp{
+    animation: script-tp 2s both;
+}
 
 
 
@@ -364,6 +434,43 @@ main{
 @keyframes hpr{
     from{
         transform: translateX(60px);
+        opacity: 0;
+    }to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* top-tp */
+@keyframes top-tp{
+    from{
+        transform: translateY(-50px);
+        opacity: 0;
+    }to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes links-tp{
+    from{
+        transform: translateY(50px);
+        opacity: 0;
+    }to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes script-tp{
+    from{
+        transform: translateX(-50px);
+        opacity: 0;
+    }to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes img-tp{
+    from{
+        transform: translateX(50px);
         opacity: 0;
     }to{
         transform: translateX(0);
@@ -392,6 +499,19 @@ main{
         justify-content: flex-end;
     }
 }
+
+/* technology */
+@media screen and (min-width:1050px){
+    .technology{
+        align-items:center;
+    }
+}
+@media screen and (max-width:1024px){
+    .technology{
+        align-items: flex-end;
+    }
+}
+
 @media screen and (max-width:992px){
     .nav{
         top: 0;
@@ -410,6 +530,42 @@ main{
     /* home page*/
     main{
         background-image: url('assets/home/background-home-tablet.jpg');
+    }
+
+    /* technology */
+    .cont-tp{
+        max-width: 100%;
+    }
+    .container-tp{
+        flex-direction: column-reverse;
+    }
+    .container-tp img{
+        width: 100%;
+    }
+    .left-tp{
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .number-tp{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .top-tp{
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+    .container-tp{
+        gap: 25px;
+        padding-bottom: 20px;
+    }
+    .number-tp{
+        margin-right: 0;
+        animation: script-tp 2s both;
+    }
+    .script-tp{
+        animation: links-tp 2s both;
     }
 }
 @media screen and (max-width:950px){
@@ -620,4 +776,7 @@ main{
         flex-direction: column-reverse;
     }
 
+    .script-tp h1{
+        font-size: 40px;
+    }
 }
