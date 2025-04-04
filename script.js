@@ -234,6 +234,9 @@ function resImgCrew(){
 }
 resImgCrew()
 window.addEventListener('resize', resImgCrew);
+linkNavM[2].addEventListener('click', () =>{
+    btnCloseUlNav.click()
+})
 
 //
 fetch('data.json')
@@ -288,4 +291,6 @@ linkTechPage.addEventListener('click',function(){
         'assets/technology/background-technology-mobile.jpg',
     )
 })
-linkTechPage.click()
+linkNavM[3].addEventListener('click', () =>{
+    btnCloseUlNav.click()
+})

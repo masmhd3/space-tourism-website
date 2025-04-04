@@ -486,6 +486,7 @@ main{
     }
     .script-cp{
         font-size: 13px;
+        color: var(--white5);
     }
     .container-cp{
         gap: 50px;
